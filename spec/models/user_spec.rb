@@ -20,5 +20,6 @@ RSpec.describe User, type: :model do
 
   context 'relation' do
     it { is_expected.to embed_many(:identities) }
+    it { is_expected.to have_many(:venues) }
   end
 end

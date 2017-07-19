@@ -73,14 +73,14 @@ RSpec.describe 'Venues API', type: :request do
   end
 
   describe 'POST /venues' do
-    let(:valid_attributes) { attributes_for(:venue) }
+    let(:valid_attributes) { build(:venue).attributes }
     let(:json_attributes) { json_api_attributes('venues', valid_attributes) }
 
     context 'when the request is valid' do
       before { post '/venues', params: json_attributes }
 
       it 'creates a venue' do
-        expect(json_api['attributes']['name']).to eq(valid_attributes[:name])
+        expect(json_api['attributes']['name']).to eq(valid_attributes['name'])
         expect(response.headers['Location']).to match(/\/venues\/\w+$/)
         expect(response.body).to be_json_api_response_for('venues')
       end
@@ -105,7 +105,7 @@ RSpec.describe 'Venues API', type: :request do
   end
 
   describe 'PUT /venues/:id' do
-    let(:valid_attributes) { attributes_for(:venue) }
+    let(:valid_attributes) { build(:venue).attributes }
     let(:json_attributes) { json_api_attributes('venues', valid_attributes) }
 
     context 'when the record exists' do

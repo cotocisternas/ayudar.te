@@ -28,6 +28,8 @@ class User
   field :locked_at,               type: Time
 
   embeds_many :identities
+  has_many :venues
+  has_many :events
 
   after_create :default_role
 

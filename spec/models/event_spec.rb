@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Venue, type: :model do
-  let(:venue) { create :venue }
+RSpec.describe Event, type: :model do
+  let(:event) { create :event }
 
-  it { expect(venue).to be_valid }
+  it { expect(event).to be_valid }
 
   it { is_expected.to have_timestamps }
   it { is_expected.to have_fields(:name, :desc).of_type(String) }
@@ -20,5 +20,4 @@ RSpec.describe Venue, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to embed_many(:comments) }
   end
-
 end

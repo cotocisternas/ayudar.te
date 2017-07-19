@@ -1,9 +1,10 @@
-class Venue
+class Event
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Taggable
   include Mongoid::Commentable
   include Mongoid::Geospatial
+
 
   field :name,                    type: String
   field :desc,                    type: String
@@ -13,4 +14,5 @@ class Venue
 
   validates :name,          presence: true, on: :create
   validates :location,      presence: true, on: :create
+
 end

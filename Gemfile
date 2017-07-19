@@ -9,6 +9,10 @@ gem 'rails', '~> 5.1.2'
 
 gem 'mongoid', '~> 6.2.0'
 
+## GEO
+gem 'mongoid-geospatial'
+gem 'georuby'
+
 ## API
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rack-cors'
