@@ -1,0 +1,1 @@
+CONFIG = Rails.application.secrets
