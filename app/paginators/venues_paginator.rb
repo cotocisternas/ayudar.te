@@ -2,7 +2,6 @@ class VenuesPaginator
 
   DEFAULT_SORTING = {created_at: :desc}
   SORTABLE_FIELDS = [:name, :created_at, :updated_at]
-  PER_PAGE = 10
 
   delegate :params, to: :controller
   delegate :venues_url, to: :controller
@@ -14,12 +13,16 @@ class VenuesPaginator
   end
 
   def venues
-    @venues ||= Venue.order(sort_params).page(current_page).per(PER_PAGE)
+    @venues ||= Venue.order(sort_params).page(current_page).per(per_page)
   end
 
   private
     def current_page
       (params.to_unsafe_h.dig('page', 'number') || 1).to_i
+    end
+
+    def per_page
+      (params.to_unsafe_h.dig('page', 'size') || 10).to_i
     end
 
     def sort_params
