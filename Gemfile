@@ -12,6 +12,7 @@ gem 'mongoid', '~> 6.2.0'
 ## API
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rack-cors'
+gem 'kaminari-mongoid'
 
 ## AUTH
 gem 'devise'

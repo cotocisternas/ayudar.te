@@ -15,10 +15,37 @@ RSpec.describe 'Venues API', type: :request do
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
     end
+
+    it 'returns sorted results' do
+      Venue.all.destroy
+      create(:venue, name: 1)
+      create(:venue, name: 2)
+      create(:venue, name: 3)
+
+      get '/venues', params: { sort: '-name' }
+
+      venues_ids = json['data'].map { |venue| venue['attributes']['name'].to_i  }
+
+      expect(response).to have_http_status(200)
+      expect(venues_ids).to eq([3,2,1])
+    end
+
+    it 'returns paginated results' do
+      create_list(:venue, 20)
+
+      get '/venues', params: { sort: '-name', page: {number: 2} }
+
+      expect(response).to have_http_status(200)
+      expect(json_api.size).to eq(10)
+      expect(URI.unescape(json['links']['first'])).to eq('http://www.example.com/venues?page[number]=1&page[size]=10&sort=-name')
+      expect(URI.unescape(json['links']['prev'])).to eq('http://www.example.com/venues?page[number]=1&page[size]=10&sort=-name')
+      expect(URI.unescape(json['links']['self'])).to eq('http://www.example.com/venues?page[number]=2&page[size]=10&sort=-name')
+      expect(URI.unescape(json['links']['next'])).to eq('http://www.example.com/venues?page[number]=3&page[size]=10&sort=-name')
+      expect(URI.unescape(json['links']['last'])).to eq('http://www.example.com/venues?page[number]=3&page[size]=10&sort=-name')
+    end
   end
 
   describe 'GET /venues/:id' do
-
     before { get "/venues/#{venue_id}" }
 
     context 'when the record exists' do
@@ -40,7 +67,7 @@ RSpec.describe 'Venues API', type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/not_found/)
+        expect(response.body).to match(/not found/)
       end
     end
   end
@@ -69,55 +96,37 @@ RSpec.describe 'Venues API', type: :request do
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
-    end
 
+      it 'returns a validation failure message' do
+        expect(response.body).to have_json_api_errors_for('/data/attributes/name')
+        expect(response.body).to match(/can't be blank/)
+      end
+    end
   end
 
-  #
-  # describe 'POST /todos' do
-  #     # valid payload
-  #     let(:valid_attributes) { { title: 'Learn Elm', created_by: '1' } }
-  #
-  #     context 'when the request is invalid' do
-  #       before { post '/todos', params: { title: 'Foobar' } }
-  #
-  #       it 'returns status code 422' do
-  #         expect(response).to have_http_status(422)
-  #       end
-  #
-  #       it 'returns a validation failure message' do
-  #         expect(response.body)
-  #           .to match(/Validation failed: Created by can't be blank/)
-  #       end
-  #     end
-  #   end
-  #
-  #   # Test suite for PUT /todos/:id
-  #   describe 'PUT /todos/:id' do
-  #     let(:valid_attributes) { { title: 'Shopping' } }
-  #
-  #     context 'when the record exists' do
-  #       before { put "/todos/#{todo_id}", params: valid_attributes }
-  #
-  #       it 'updates the record' do
-  #         expect(response.body).to be_empty
-  #       end
-  #
-  #       it 'returns status code 204' do
-  #         expect(response).to have_http_status(204)
-  #       end
-  #     end
-  #   end
-  #
-  #   # Test suite for DELETE /todos/:id
-  #   describe 'DELETE /todos/:id' do
-  #     before { delete "/todos/#{todo_id}" }
-  #
-  #     it 'returns status code 204' do
-  #       expect(response).to have_http_status(204)
-  #     end
-  #   end
+  describe 'PUT /venues/:id' do
+    let(:valid_attributes) { attributes_for(:venue) }
+    let(:json_attributes) { json_api_attributes('venues', valid_attributes) }
 
+    context 'when the record exists' do
+      before { put "/venues/#{venue_id}", params: json_attributes }
 
+      it 'updates the record' do
+        expect(response.body).to be_empty
+      end
+
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
+
+  describe 'DELETE /venues/:id' do
+    before { delete "/venues/#{venue_id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
 
 end

@@ -1,9 +1,14 @@
 class VenuesController < ApplicationController
+
   before_action :set_venue, only: [:show, :update, :destroy]
 
   def index
-    @venues = Venue.all
+    @venues = VenuesPaginator.new(self).venues
     json_response(@venues)
+  end
+
+  def show
+    json_response(@venue)
   end
 
   def create
@@ -16,29 +21,25 @@ class VenuesController < ApplicationController
     end
   end
 
-  def show
-    json_response(@venue)
-  end
-
   def update
-    @venue.update(venue_params)
-    head :no_content
+    if @venue.update(venue_attributes)
+      head :no_content
+    else
+      json_error(@venue)
+    end
   end
 
   def destroy
-    @venue.destroy
-    head :no_content
+    if @venue.destroy
+      head :no_content
+    else
+      json_error(@venue)
+    end
   end
 
   private
-    def venue_params
-      params.require(:data).permit(:type, {
-        attributes: [:name, :description]
-      })
-    end
-
     def venue_attributes
-      venue_params[:attributes] || {}
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 
     def set_venue
@@ -46,15 +47,3 @@ class VenuesController < ApplicationController
     end
 
 end
-#
-#
-# def create
-#     attributes = rental_unit_attributes.merge({user_id: auth_user.id})
-#     @rental_unit = RentalUnit.new(attributes)
-#
-#     if @rental_unit.save
-#       render json: @rental_unit, status: :created, location: @rental_unit
-#     else
-#       respond_with_errors(@rental_unit)
-#     end
-#   end
