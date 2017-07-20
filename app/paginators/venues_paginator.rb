@@ -27,11 +27,5 @@ class VenuesPaginator
     def sort_params
       SortParams.sorted_fields(params[:sort], SORTABLE_FIELDS, DEFAULT_SORTING)
     end
-
-    def rebuild_params
-      @rebuild_params ||= begin
-        rejected = ['action', 'controller']
-        params.to_unsafe_h.reject { |key, value| rejected.include?(key.to_s) }
-      end
-    end
+    
 end

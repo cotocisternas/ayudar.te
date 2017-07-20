@@ -9,7 +9,7 @@ class Venue
   field :desc,                    type: String
   field :location,                type: Point, spatial: true
 
-  belongs_to  :user
+  belongs_to :user
 
   validates :name,          presence: true, on: :create
   validates :location,      presence: true, on: :create

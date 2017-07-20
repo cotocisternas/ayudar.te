@@ -2,7 +2,7 @@ module ExceptionHandler
   extend ActiveSupport::Concern
 
   included do
-    rescue_from Mongoid::Errors::DocumentNotFound do |e|
+    rescue_from Mongoid::Errors::DocumentNotFound
       # json_response({ status: 404, detail: 'not_found' }, :not_found)
       json_response(
         {

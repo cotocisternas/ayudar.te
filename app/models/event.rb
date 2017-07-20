@@ -17,7 +17,7 @@ class Event
 
   enum  :days, [:sun,:mon,:tue,:wed,:thu,:fri,:sat], multiple: true, default: -> {days_defaults}
 
-  belongs_to  :user
+  belongs_to :user
 
   validates :name,          presence: true, on: :create
   validates :location,      presence: true, on: :create

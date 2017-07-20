@@ -34,7 +34,7 @@ class User
   after_create :default_role
 
   tmp_email_regex   = /\Achange@me/
-  tmp_email_prefix  = 'change@me'
+# tmp_email_prefix  = 'change@me'
   email_regex       = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
 
   validates :email,         presence: true
