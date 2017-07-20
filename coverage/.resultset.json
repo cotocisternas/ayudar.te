@@ -649,7 +649,7 @@
         1,
         null,
         1,
-        1,
+        null,
         1,
         null,
         1,
@@ -1435,12 +1435,6 @@
         6,
         null,
         null,
-        1,
-        null,
-        0,
-        0,
-        0,
-        null,
         null
       ],
       "/home/coto/dev/rails/ayudar.te/app/controllers/concerns/sort_params.rb": [
@@ -1557,12 +1551,6 @@
         6,
         null,
         null,
-        1,
-        null,
-        0,
-        0,
-        0,
-        null,
         null
       ],
       "/home/coto/dev/rails/ayudar.te/app/serializers/venue_serializer.rb": [
@@ -1576,6 +1564,6 @@
         null
       ]
     },
-    "timestamp": 1500521411
+    "timestamp": 1500523274
   }
 }
