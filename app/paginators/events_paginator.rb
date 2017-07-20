@@ -1,7 +1,7 @@
-class VenuesPaginator
+class EventsPaginator
 
   DEFAULT_SORTING = {created_at: :desc}
-  SORTABLE_FIELDS = [:name, :created_at, :updated_at]
+  SORTABLE_FIELDS = [:name]
 
   delegate :params, to: :controller
 
@@ -11,8 +11,8 @@ class VenuesPaginator
     @controller = controller
   end
 
-  def venues
-    @venues ||= Venue.order(sort_params).page(current_page).per(per_page)
+  def events
+    @events ||= Event.order(sort_params).page(current_page).per(per_page)
   end
 
   private

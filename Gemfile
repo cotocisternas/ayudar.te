@@ -8,6 +8,7 @@ end
 gem 'rails', '~> 5.1.2'
 
 gem 'mongoid', '~> 6.2.0'
+gem 'mongoid-enum', :github => 'cotocisternas/mongoid-enum'
 
 ## GEO
 gem 'mongoid-geospatial'

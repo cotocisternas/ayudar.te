@@ -7,7 +7,8 @@ RSpec.describe Event, type: :model do
 
   it { is_expected.to have_timestamps }
   it { is_expected.to have_fields(:name, :desc).of_type(String) }
-  it { is_expected.to have_fields(:tags).of_type(Array) }
+  it { is_expected.to have_fields(:tags, :days).of_type(Array) }
+  it { is_expected.to have_fields(:recurrent).of_type(Mongoid::Boolean) }
   it { is_expected.to have_fields(:location).of_type(Mongoid::Geospatial::Point) }
 
   context 'validation' do

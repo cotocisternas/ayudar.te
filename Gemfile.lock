@@ -8,6 +8,13 @@ GIT
       mongoid-grid_fs (>= 1.3, < 3.0)
 
 GIT
+  remote: https://github.com/cotocisternas/mongoid-enum.git
+  revision: 47c8e627df2b10f411115af3899dfb145982eb14
+  specs:
+    mongoid-enum (0.4.0)
+      mongoid (>= 5.0)
+
+GIT
   remote: https://github.com/mongoid-rspec/mongoid-rspec.git
   revision: f392d24abc6853895bd959b4916cd82a1b12f6f4
   specs:
@@ -404,6 +411,7 @@ DEPENDENCIES
   meta_request
   mocha
   mongoid (~> 6.2.0)
+  mongoid-enum!
   mongoid-geospatial
   mongoid-rspec!
   omniauth-facebook
