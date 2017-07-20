@@ -1,9 +1,21 @@
 require 'factory_girl_rails'
 require 'simplecov'
-SimpleCov.start
-
 require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
+
+SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::Codecov,
+])
+
+SimpleCov.start 'rails' do
+  add_filter 'app/controllers/application_controller.rb'
+  add_group "Serializers", "app/serializers"
+  add_group "Paginators", "app/paginators"
+  add_filter do |source_file|
+    source_file.lines.count < 5
+  end
+end
+
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
