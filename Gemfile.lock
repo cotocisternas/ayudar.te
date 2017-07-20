@@ -126,6 +126,10 @@ GEM
       carrierwave (>= 0.7, < 2.0)
     case_transform (0.2)
       activesupport
+    codecov (0.1.10)
+      json
+      simplecov
+      url
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     database_cleaner (1.6.1)
@@ -371,6 +375,7 @@ GEM
     tilt (2.0.7)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
+    url (0.3.2)
     vegas (0.1.11)
       rack (>= 1.0.0)
     warden (1.2.7)
@@ -397,6 +402,7 @@ DEPENDENCIES
   carrierwave (~> 0.11)
   carrierwave-aws
   carrierwave-mongoid!
+  codecov
   database_cleaner
   devise
   devise-encryptable

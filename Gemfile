@@ -65,6 +65,7 @@ group :test do
   gem 'database_cleaner'
   gem 'mocha', :require => false
   gem 'resque_spec'
+  gem 'codecov', :require => false
 end
 
 gem 'capistrano-rails', group: :development
