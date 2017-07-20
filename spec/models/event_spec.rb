@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
+  let!(:events) { create_list(:event, 10) }
   let(:event) { create :event }
 
   it { expect(event).to be_valid }
@@ -20,5 +21,16 @@ RSpec.describe Event, type: :model do
   context 'relation' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to embed_many(:comments) }
+  end
+
+  describe '.tags' do
+    context 'all_tags' do
+      it { expect(event.tags).to be_kind_of(Array) }
+      it { expect(Event.all_tags[0]).to have_key(:name) }
+      it { expect(Event.tagged_with('foo').first).to be_nil }
+      it { expect(Event.tagged_without('foo').first).to be_valid }
+      it { expect(Event.tagged_with_all('foo').first).to be_nil }
+      it { expect(Event.tag_list).to be_kind_of(Array) }
+    end
   end
 end

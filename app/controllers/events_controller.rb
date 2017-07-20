@@ -30,11 +30,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    if @event.destroy
-      head :no_content
-    else
-      json_error(@event)
-    end
+    @event.destroy
+    head :no_content
   end
 
   private

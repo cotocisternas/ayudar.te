@@ -16,7 +16,7 @@ RSpec.describe 'Venues API', type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it 'returns sorted results' do
+    it 'returns sorted results desc' do
       Venue.all.destroy
       create(:venue, name: 1)
       create(:venue, name: 2)
@@ -28,6 +28,20 @@ RSpec.describe 'Venues API', type: :request do
 
       expect(response).to have_http_status(200)
       expect(venues_ids).to eq([3,2,1])
+    end
+
+    it 'returns sorted results asc' do
+      Venue.all.destroy
+      create(:venue, name: 1)
+      create(:venue, name: 2)
+      create(:venue, name: 3)
+
+      get '/venues', params: { sort: 'name' }
+
+      venues_ids = json['data'].map { |venue| venue['attributes']['name'].to_i  }
+
+      expect(response).to have_http_status(200)
+      expect(venues_ids).to eq([1,2,3])
     end
 
     it 'returns paginated results' do
@@ -117,6 +131,20 @@ RSpec.describe 'Venues API', type: :request do
 
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
+      end
+    end
+
+    context 'when the request is invalid' do
+      before { put "/venues/#{venue_id}", params: json_api_attributes('venues', {user: nil}) }
+
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body).to have_json_api_errors_for('/data/attributes/user')
+        expect(response.body).to match(/can't be blank/)
       end
     end
   end

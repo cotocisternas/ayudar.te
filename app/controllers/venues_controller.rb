@@ -30,11 +30,8 @@ class VenuesController < ApplicationController
   end
 
   def destroy
-    if @venue.destroy
-      head :no_content
-    else
-      json_error(@venue)
-    end
+    @venue.destroy
+    head :no_content
   end
 
   private

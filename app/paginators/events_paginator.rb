@@ -27,5 +27,5 @@ class EventsPaginator
     def sort_params
       SortParams.sorted_fields(params[:sort], SORTABLE_FIELDS, DEFAULT_SORTING)
     end
-    
+
 end

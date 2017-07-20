@@ -6,14 +6,6 @@ module Mongoid
       field :tags, type: Array, default: []
       index tags: 1
 
-      def tag_list=(tags)
-        self.tags = tags.to_s.split(",").collect{ |t| t.strip }.delete_if{ |t| t.blank? }
-      end
-
-      def tag_list
-        self.tags.join(", ") if tags
-      end
-
       def tags
         super || []
       end

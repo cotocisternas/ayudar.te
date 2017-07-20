@@ -16,7 +16,7 @@ RSpec.describe 'Events API', type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it 'returns sorted results' do
+    it 'returns sorted results desc' do
       Event.all.destroy
       create(:event, name: 1)
       create(:event, name: 2)
@@ -28,6 +28,19 @@ RSpec.describe 'Events API', type: :request do
 
       expect(response).to have_http_status(200)
       expect(events_ids).to eq([3,2,1])
+    end
+
+    it 'returns sorted results asc' do
+      Event.all.destroy
+      create(:event, name: 1)
+      create(:event, name: 2)
+      create(:event, name: 3)
+      get '/events', params: { sort: 'name' }
+
+      events_ids = json['data'].map { |event| event['attributes']['name'].to_i }
+
+      expect(response).to have_http_status(200)
+      expect(events_ids).to eq([1,2,3])
     end
 
     it 'returns paginated results' do
@@ -117,6 +130,19 @@ RSpec.describe 'Events API', type: :request do
 
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
+      end
+    end
+
+    context 'when the request is invalid' do
+      before { put "/events/#{event_id}", params: json_api_attributes('events', {days: ['foobar']}) }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body).to have_json_api_errors_for('/data/attributes/days')
+        expect(response.body).to match(/is not in sun, mon, tue, wed, thu, fri, sat/)
       end
     end
   end
