@@ -17,6 +17,8 @@ class Event
 
   enum  :days, [:sun,:mon,:tue,:wed,:thu,:fri,:sat], multiple: true, default: -> {days_defaults}
 
+  mount_uploader :image, PhotoUploader
+
   belongs_to :user
 
   validates :name,          presence: true, on: :create

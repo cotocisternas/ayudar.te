@@ -26,9 +26,11 @@ gem 'omniauth-facebook'
 gem 'rolify'
 
 ## FILES
-gem 'carrierwave', '~> 0.11'
-gem 'carrierwave-mongoid', :github => 'carrierwaveuploader/carrierwave-mongoid',  :require => 'carrierwave/mongoid'
-gem 'carrierwave-aws'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+# gem 'carrierwave-mongoid', github: 'carrierwaveuploader/carrierwave-mongoid', require: 'carrierwave/mongoid'
+# gem 'mongoid-grid_fs'#, github: 'mongoid/mongoid-grid_fs'
+# gem 'carrierwave-aws'
 gem 'rmagick'
 
 group :development, :test do
@@ -40,6 +42,7 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'faker'
+  gem 'database_cleaner'
   gem 'byebug', platform: :mri
   gem 'pry-byebug'
   gem 'rb-inotify'
@@ -62,7 +65,6 @@ end
 
 group :test do
   gem 'simplecov', :require => false
-  gem 'database_cleaner'
   gem 'mocha', :require => false
   gem 'resque_spec'
   gem 'codecov', :require => false

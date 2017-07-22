@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/carrierwaveuploader/carrierwave-mongoid.git
-  revision: d923685d205828a55594a6b45da8d67f486be7c8
-  specs:
-    carrierwave-mongoid (0.10.0)
-      carrierwave (>= 0.8.0, < 0.12.0)
-      mongoid (>= 3.0, < 7.0)
-      mongoid-grid_fs (>= 1.3, < 3.0)
-
-GIT
   remote: https://github.com/cotocisternas/mongoid-enum.git
   revision: 47c8e627df2b10f411115af3899dfb145982eb14
   specs:
@@ -74,14 +65,6 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
     awesome_print (1.8.0)
-    aws-sdk (2.10.14)
-      aws-sdk-resources (= 2.10.14)
-    aws-sdk-core (2.10.14)
-      aws-sigv4 (~> 1.0)
-      jmespath (~> 1.0)
-    aws-sdk-resources (2.10.14)
-      aws-sdk-core (= 2.10.14)
-    aws-sigv4 (1.0.1)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -121,9 +104,10 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
-    carrierwave-aws (1.1.0)
-      aws-sdk (~> 2.0)
-      carrierwave (>= 0.7, < 2.0)
+    carrierwave-mongoid (0.10.0)
+      carrierwave (>= 0.8.0, < 0.12.0)
+      mongoid (>= 3.0, < 7.0)
+      mongoid-grid_fs (>= 1.3, < 3.0)
     case_transform (0.2)
       activesupport
     codecov (0.1.10)
@@ -153,7 +137,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.8.4)
       i18n (~> 0.5)
-    faraday (0.12.1)
+    faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     formatador (0.2.5)
@@ -179,7 +163,6 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashie (3.5.6)
     i18n (0.8.6)
-    jmespath (1.3.1)
     json (2.1.0)
     jsonapi-renderer (0.1.3)
     jwt (1.5.6)
@@ -211,7 +194,7 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_portile2 (2.2.0)
-    minitest (5.10.2)
+    minitest (5.10.3)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
     mongo (2.4.2)
@@ -399,9 +382,8 @@ DEPENDENCIES
   capistrano-rails
   capybara
   capybara-screenshot
-  carrierwave (~> 0.11)
-  carrierwave-aws
-  carrierwave-mongoid!
+  carrierwave
+  carrierwave-mongoid
   codecov
   database_cleaner
   devise

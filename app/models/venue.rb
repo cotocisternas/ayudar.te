@@ -9,6 +9,8 @@ class Venue
   field :desc,                    type: String
   field :location,                type: Point, spatial: true
 
+  mount_uploader :image, PhotoUploader
+
   belongs_to :user
 
   validates :name,          presence: true, on: :create
