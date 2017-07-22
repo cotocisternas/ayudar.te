@@ -23,5 +23,10 @@ FactoryGirl.define do
         build(:comment),
       ]}
     end
+
+    trait :photo do
+      image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'file', 'test.jpg'), 'image/jpeg') }
+    end
+    
   end
 end

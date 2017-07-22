@@ -8,7 +8,5 @@ class VenueSerializer < ActiveModel::Serializer
       thumb: object.image.thumb.url,
       mime: object.image.file.content_type
     }
-
   end
-
 end
