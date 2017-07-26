@@ -45,9 +45,15 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'byebug', platform: :mri
   gem 'pry-byebug'
-  gem 'rb-inotify'
   gem 'rb-readline'
-  gem 'libnotify'
+  case RUBY_PLATFORM
+  when /darwin/
+    gem 'rb-fsevent'
+    gem 'growl'
+  when /linux/
+    gem 'rb-inotify'
+    gem 'libnotify'
+  end
 end
 
 group :development do

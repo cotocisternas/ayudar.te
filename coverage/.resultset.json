@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/coto/dev/rails/ayudar.te/app/models/user.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/models/user.rb": [
         1,
         1,
         1,
@@ -56,7 +56,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/controllers/events_controller.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/controllers/events_controller.rb": [
         1,
         null,
         1,
@@ -104,7 +104,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/controllers/concerns/response.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/controllers/concerns/response.rb": [
         1,
         1,
         28,
@@ -131,7 +131,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/controllers/concerns/exception_handler.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/controllers/concerns/exception_handler.rb": [
         1,
         1,
         null,
@@ -178,7 +178,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/controllers/gridfs_controller.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/controllers/gridfs_controller.rb": [
         1,
         null,
         1,
@@ -213,7 +213,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/models/comment.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/models/comment.rb": [
         1,
         1,
         1,
@@ -239,7 +239,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/models/event.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/models/event.rb": [
         1,
         1,
         1,
@@ -272,7 +272,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/models/concerns/mongoid/taggable.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/models/concerns/mongoid/taggable.rb": [
         1,
         1,
         1,
@@ -312,7 +312,7 @@
         4,
         null,
         4,
-        83,
+        84,
         null,
         null,
         1,
@@ -331,14 +331,14 @@
         null,
         null,
         1,
-        41,
+        42,
         null,
         null,
         null,
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/models/concerns/mongoid/commentable.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/models/concerns/mongoid/commentable.rb": [
         1,
         1,
         1,
@@ -351,7 +351,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/uploaders/photo_uploader.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/uploaders/photo_uploader.rb": [
         1,
         null,
         1,
@@ -366,7 +366,7 @@
         null,
         null,
         1,
-        1770,
+        1906,
         null,
         null,
         1,
@@ -385,7 +385,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/models/venue.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/models/venue.rb": [
         1,
         1,
         1,
@@ -405,7 +405,7 @@
         1,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/models/role.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/models/role.rb": [
         1,
         1,
         1,
@@ -427,7 +427,7 @@
         1,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/models/identity.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/models/identity.rb": [
         1,
         1,
         1,
@@ -443,7 +443,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/paginators/events_paginator.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/paginators/events_paginator.rb": [
         1,
         null,
         1,
@@ -476,7 +476,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/controllers/concerns/sort_params.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/controllers/concerns/sort_params.rb": [
         1,
         null,
         1,
@@ -502,7 +502,21 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/controllers/venues_controller.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/serializers/event_serializer.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        70,
+        null,
+        null
+      ],
+      "/Users/coto/dev/rails/ayudar.te/app/controllers/venues_controller.rb": [
         1,
         null,
         1,
@@ -550,7 +564,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/paginators/venues_paginator.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/paginators/venues_paginator.rb": [
         1,
         null,
         1,
@@ -583,7 +597,7 @@
         null,
         null
       ],
-      "/home/coto/dev/rails/ayudar.te/app/serializers/venue_serializer.rb": [
+      "/Users/coto/dev/rails/ayudar.te/app/serializers/venue_serializer.rb": [
         1,
         1,
         1,
@@ -595,11 +609,9 @@
         null,
         70,
         null,
-        null,
-        null,
         null
       ]
     },
-    "timestamp": 1500753984
+    "timestamp": 1501070012
   }
 }
