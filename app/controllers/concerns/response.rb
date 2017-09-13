@@ -7,6 +7,17 @@ module Response
     end
   end
 
+  def custom_json_error(field, error_message)
+    render json: {
+        errors: {
+          status: 422,
+          source: {pointer: "/data/attributes/#{field}"},
+          detail: error_message
+        }
+      },
+      status: :unprocessable_entity
+  end
+
   def json_error(object)
     render json: {errors: error_serialize(object)}, status: :unprocessable_entity
   end

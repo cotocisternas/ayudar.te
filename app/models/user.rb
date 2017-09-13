@@ -41,7 +41,7 @@ class User
   validates :email,         format: {with: email_regex}
   validates :email,         format: {without: tmp_email_regex}, on: :update
   validates :email,         uniqueness: true
-  validates :password,      presence: true
+  validates :password,      presence: true, on: :create
   validates :password,      confirmation: true
   validates :password,      length: { in: 6..20 }
 

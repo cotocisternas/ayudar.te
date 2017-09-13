@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    json_response(@users)
+    json_response(@user)
   end
 
   def create
@@ -22,10 +22,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_attributes)
-      head :no_content
+    if @user.valid_password?(user_attributes[:password])
+      if @user.update(user_attributes)
+        head :no_content
+      else
+        json_error(@user)
+      end
     else
-      json_response(@user)
+      custom_json_error('password', 'invalid password')
     end
   end
 
