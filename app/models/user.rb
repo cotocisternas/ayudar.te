@@ -28,8 +28,8 @@ class User
   field :locked_at,               type: Time
 
   embeds_many :identities
-  has_many :venues
-  has_many :events
+  has_many :venues, dependent: :nullify
+  has_many :events, dependent: :nullify
 
   after_create :default_role
 

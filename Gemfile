@@ -18,6 +18,7 @@ gem 'georuby'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rack-cors'
 gem 'kaminari-mongoid'
+gem 'graphql'
 
 ## AUTH
 gem 'devise'
